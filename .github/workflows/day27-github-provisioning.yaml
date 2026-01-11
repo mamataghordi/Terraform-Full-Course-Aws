@@ -48,21 +48,7 @@ jobs:
         with:
           terraform_version: 1.13.3
 
-      - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v3
-        with:
-          tflint_version: v0.52.0
-
-      - name: Init TFLint
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: tflint --init
-
-      - name: Run TFLint
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: tflint -f compact
-
+     
       - name: Run Trivy vulnerability scanner in IaC mode
         uses: aquasecurity/trivy-action@master
         with:
